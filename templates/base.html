@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+
+    <title>URL status Checker</title>
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/main_logic" %}"></script>
+
+</head>
+<body>
+<div class="main">
+    <div class="head"></div>
+    <div class="table">
+        <table>
+            <tbody>
+                <tr>
+                {% for u in urls %}
+                    <td>u.url</td><td>u.status_code</td>
+                {% endfor %}
+                    <td>u.url</td><td>u.status_code</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+</body>
+</html>
