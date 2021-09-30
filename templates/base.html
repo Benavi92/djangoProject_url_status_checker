@@ -6,24 +6,30 @@
 
     <title>URL status Checker</title>
     <script src="{% static "js/jquery.js" %}"></script>
-    <script src="{% static "js/main_logic" %}"></script>
+    <script src="{% static "js/main_logic.js" %}"></script>
 
 </head>
 <body>
+{% csrf_token %}
+
 <div class="main">
-    <div class="head"></div>
+    <div class="head">interval(ms): <input id="interval" value="1500" onchange="interval=Number(this.value)"></input></div>
     <div class="table">
-        <table style="">
+        <table style="" id="main_table">
             <thead>
                 <th scope="col">id</th>
+                <th scope="col">url</th>
+                <th scope="col">status code</th>
+                <th scope="col">command</th>
+
             </thead>
             <tbody style="border: 1px">
                 {% for u in urls %}
-                <tr style={% if u.status_code != 200 %}"background: red"{% else %} "background: green"{% endif %}>
-                    <td>{{ u.id }}</td>
-                    <td>{{ u.url }}</td>
-                    <td>{{ u.status_code }}</td>
-                    <td> <button id="{{ u.id }}">check</button></td>
+                <tr style={% if u.status_code != 200 %}"background: red"{% else %} "background: green"{% endif %} id="row_{{ u.id }}">
+                    <td class="col_id">{{ u.id }}</td>
+                    <td class="col_url">{{ u.url }}</td>
+                    <td class="col_status_code">{{ u.status_code }}</td>
+                    <td class="col_active"> <button class="pause_buttons" id="button_{{ u.id }}" onclick="change_status({{ u.id }})">pause</button></td>
 
                 </tr>
                 {% endfor %}
