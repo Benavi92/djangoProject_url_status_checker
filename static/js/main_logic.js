@@ -14,6 +14,10 @@ function update_table_body(info) {
         if (data_row.status_code != 200){
             row.style.background = "red"
         }
+        else {
+            row.style.background = "green"
+
+        }
     }
 };
 
