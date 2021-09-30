@@ -13,15 +13,20 @@
 <div class="main">
     <div class="head"></div>
     <div class="table">
-        <table>
-            <tbody>
-                <tr>
+        <table style="">
+            <thead>
+                <th scope="col">id</th>
+            </thead>
+            <tbody style="border: 1px">
                 {% for u in urls %}
-                    <td>u.url</td><td>u.status_code</td>
-                {% endfor %}
-                    <td>u.url</td><td>u.status_code</td>
+                <tr style={% if u.status_code != 200 %}"background: red"{% else %} "background: green"{% endif %}>
+                    <td>{{ u.id }}</td>
+                    <td>{{ u.url }}</td>
+                    <td>{{ u.status_code }}</td>
+                    <td> <button id="{{ u.id }}">check</button></td>
 
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
