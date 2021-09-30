@@ -21,7 +21,7 @@ function request_to_server(e){
     console.log(to_not_update)
         $.ajax({
             type: "POST",
-            url: '/url_checker/check_all/',
+            url: '/check_all/',
             data: JSON.stringify({to_not_update: to_not_update}),
             dataType: "json",
             success: function (response) {
